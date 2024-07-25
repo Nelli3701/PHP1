@@ -52,4 +52,12 @@ class Library
         $this->books[$book->getId()] = $book;
         $shelf->addBook($book);
     }
+
+    public function getInfo(): string
+    {
+        $booksList = implode(", ", array_map(fn ($book) => $book->getName(), $this->books));
+        $holdersList = implode(", ", array_map(fn ($holder) => $holder->getName(), $this->holders));
+
+        return "Library: {$this->name}, Address: {$this->address}, Books: {$booksList}, Holders: {$holdersList}";
+    }
 }
